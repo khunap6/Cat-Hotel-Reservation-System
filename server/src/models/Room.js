@@ -1,0 +1,19 @@
+module.exports = (sequelize, DataTypes) => {
+  const Room = sequelize.define(
+    'Room',
+    {
+      name: { type: DataTypes.STRING, allowNull: false }, // เช่น Deluxe Room
+      type: { type: DataTypes.STRING, allowNull: false }, // เช่น Standard/Deluxe/VIP
+      pricePerNight: { type: DataTypes.FLOAT, allowNull: false, defaultValue: 0 },
+      capacityCats: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 1 },
+      description: { type: DataTypes.TEXT, allowNull: true },
+      status: {
+        type: DataTypes.ENUM('available', 'full', 'maintenance'),
+        allowNull: false,
+        defaultValue: 'available',
+      },
+    },
+    { tableName: 'rooms', timestamps: true }
+  )
+  return Room
+}
