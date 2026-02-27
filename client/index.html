@@ -1,13 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>client</title>
+
+    <title>The Cat Hotel</title>
+
+    <!-- ===== Google Font (Template ใช้) ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Material Icons (ใช้ทั้งระบบ) ===== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- ปรับ body ให้ใช้ font ของ template -->
+    <style>
+      body {
+        margin: 0;
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI,
+          Roboto, Arial, sans-serif;
+        background-color: #f6f6f8;
+      }
+    </style>
   </head>
+
   <body>
+    <!-- Vue จะ mount ที่นี่ -->
     <div id="app"></div>
+
+    <!-- Vite entry -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { useAuthenStore } from '../stores/authen'
 
-export default () => {
-    const authenStore = useAuthenStore()
+const api = axios.create({
+  baseURL: 'http://localhost:8081/',
+})
 
-    return axios.create({    
-        baseURL: 'http://localhost:8081/',
-        headers: {
-            Authorization: `Bearer ${authenStore.token}`
-        }
-    })
-}
+api.interceptors.request.use((config) => {
+  const auth = useAuthenStore()
+  if (auth.token) config.headers.Authorization = `Bearer ${auth.token}`
+  else delete config.headers.Authorization
+  return config
+})
+
+export default () => api

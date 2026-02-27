@@ -1,9 +1,9 @@
 {
-  "name": "nv-webblog-server",
+  "name": "cat-hotel-reservation-system",
   "version": "1.0.0",
   "description": "nodejs vuejs webblog server (backend)",
   "license": "ISC",
-  "author": "Nattapon Kumyaito",
+  "author": "Cat-Hotel",
   "type": "commonjs",
   "main": "src/app.js",
   "scripts": {
@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "joi": "^17.11.0",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "multer": "^2.0.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
