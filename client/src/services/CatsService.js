@@ -8,5 +8,8 @@ export default {
   },
   update(id, cat) {
     return Api().put('my/cats/' + id, cat)
+  },
+  delete(id) {
+    return Api.delete("/my/cats/" + id)
   }
 }

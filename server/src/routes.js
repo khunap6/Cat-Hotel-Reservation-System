@@ -24,6 +24,7 @@ module.exports = (app) => {
   app.get('/my/cats', requireAuth, CatController.myCats)
   app.post('/my/cats', requireAuth, CatController.create)
   app.put('/my/cats/:id', requireAuth, CatController.update)
+  app.delete('/my/cats/:id', requireAuth, CatController.remove)
 
   // Reservations (customer)
   app.get('/my/reservations', requireAuth, ReservationController.my)

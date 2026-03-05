@@ -52,6 +52,25 @@ module.exports = {
     res.send(cat)
   },
 
+  //customer: Delete MyCat
+  async remove(req, res) {
+
+    const cat = await Cat.findByPk(req.params.id)
+
+    if (!cat) {
+      return res.status(404).send({ error: "Cat not found" })
+    }
+
+    if (cat.userId !== req.user.id) {
+      return res.status(403).send({ error: "Forbidden" })
+    }
+
+    await cat.destroy()
+
+    res.send({ message: "Cat deleted" })
+
+  },
+
   // admin: list all cats
   async all(req, res) {
     const cats = await Cat.findAll({ order: [['id', 'DESC']] })
