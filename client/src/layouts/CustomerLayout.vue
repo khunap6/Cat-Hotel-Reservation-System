@@ -10,15 +10,17 @@
         </div>
 
         <nav class="flex flex-col gap-2 flex-1">
-          <RouterLink class="navlink" to="/customer">Dashboard</RouterLink>
+          <RouterLink class="navlink" to="/customer/dashboard">Dashboard</RouterLink>
           <RouterLink class="navlink" to="/customer/cats">My Cats</RouterLink>
           <RouterLink class="navlink" to="/customer/booking">Room Booking</RouterLink>
           <RouterLink class="navlink" to="/customer/reservations">My Reservations</RouterLink>
           <RouterLink class="navlink" to="/customer/announcements">Announcements</RouterLink>
         </nav>
 
-        <button class="w-full h-12 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/30"
-                @click="logout">
+        <button
+          class="w-full h-12 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/30"
+          @click="logout"
+        >
           Logout
         </button>
       </aside>
@@ -30,7 +32,8 @@
         </header>
 
         <div class="p-10">
-          <slot />
+          <!-- ✅ ต้องเป็น router-view ไม่ใช่ slot -->
+          <RouterView />
         </div>
       </main>
     </div>

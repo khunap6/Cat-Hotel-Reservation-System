@@ -15,6 +15,9 @@ require('./userPassport')
 const passport = require('passport')
 app.use(passport.initialize())
 
+// upload image
+app.use('/assets', express.static('public'))
+
 // Routes
 require('./routes')(app)
 

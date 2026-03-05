@@ -92,7 +92,7 @@ async function onLogin() {
   loading.value = true
   try {
     await auth.login(email.value, password.value)
-    router.push(auth.isAdmin ? '/admin' : '/customer')
+    router.push(auth.isAdmin ? '/admin/dashboard' : '/customer/dashboard')
   } catch (e) {
     error.value = e?.response?.data?.error || 'Login failed'
   } finally {

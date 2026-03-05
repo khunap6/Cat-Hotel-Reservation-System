@@ -4,7 +4,8 @@ const RoomController = require('./controllers/RoomController')
 const ReservationController = require('./controllers/ReservationController')
 const UserController = require('./controllers/UserController')
 const AnnouncementController = require('./controllers/AnnouncementController')
-
+const UploadController = require('./controllers/UploadController')
+const upload = require('./middleware/upload')
 const { requireAuth, requireAdmin } = require('./middleware/auth')
 
 module.exports = (app) => {
@@ -52,4 +53,11 @@ module.exports = (app) => {
   app.post('/admin/announcements', requireAuth, requireAdmin, AnnouncementController.create)
   app.put('/admin/announcements/:id', requireAuth, requireAdmin, AnnouncementController.update)
   app.delete('/admin/announcements/:id', requireAuth, requireAdmin, AnnouncementController.remove)
+
+  // upload image
+  app.post('/upload',
+    requireAuth,
+    upload.single('image'),
+    UploadController.upload
+  )
 }

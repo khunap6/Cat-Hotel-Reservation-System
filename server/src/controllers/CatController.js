@@ -9,8 +9,11 @@ module.exports = {
 
   // customer: create cat
   async create(req, res) {
-    const { name, breed, gender, age, weight, note } = req.body
-    if (!name) return res.status(400).send({ error: 'name is required' })
+    const { name, breed, gender, age, weight, note, imageUrl } = req.body
+
+    if (!name) {
+      return res.status(400).send({ error: 'name is required' })
+    }
 
     const cat = await Cat.create({
       userId: req.user.id,
@@ -20,7 +23,9 @@ module.exports = {
       age,
       weight,
       note,
+      imageUrl // ⭐ เพิ่ม
     })
+
     res.send(cat)
   },
 
@@ -30,7 +35,15 @@ module.exports = {
     if (!cat) return res.status(404).send({ error: 'Cat not found' })
     if (cat.userId !== req.user.id) return res.status(403).send({ error: 'Forbidden' })
 
-    const fields = ['name', 'breed', 'gender', 'age', 'weight', 'note']
+    const fields = [
+      'name',
+      'breed',
+      'gender',
+      'age',
+      'weight',
+      'note',
+      'imageUrl' // ⭐ เพิ่ม
+    ]
     fields.forEach((f) => {
       if (req.body[f] !== undefined) cat[f] = req.body[f]
     })
