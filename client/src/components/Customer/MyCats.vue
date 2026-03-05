@@ -242,6 +242,18 @@ async function onSubmit() {
 
 }
 
+async function deleteCat(cat) {
+  const ok = confirm(`Delete ${cat.name}?`)
+  if (!ok) return
+
+  try {
+    await CatService.remove(cat.id)   // ✅ ให้ตรงกับ service
+    await loadCats()                  // ✅ reload list
+  } catch (e) {
+    alert(e?.response?.data?.error || "Delete failed")
+  }
+}
+
 onMounted(loadCats)
 
 </script>
