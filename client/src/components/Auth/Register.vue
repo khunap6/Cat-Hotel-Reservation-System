@@ -1,213 +1,123 @@
 <template>
   <div class="w-full">
-    <!-- heading -->
-    <div class="mb-10 text-center md:text-left">
-      <h2 class="text-5xl md:text-6xl font-black text-background-dark dark:text-white mb-3">
-        Create account
-      </h2>
-      <p class="text-lg md:text-xl text-[#646f87] font-medium">
-        Join The Cat Hotel and manage your cat's stays easily.
-      </p>
+
+    <!-- Heading -->
+    <div class="mb-5">
+      <h2 class="text-3xl font-black text-slate-900 mb-1">Create account</h2>
+      <p class="text-sm text-slate-500">Join The Cat Hotel and manage your cat's stays easily.</p>
     </div>
 
-    <!-- tabs -->
-    <div class="flex p-1.5 bg-background-light dark:bg-white/5 rounded-2xl mb-10">
-      <button
-        class="flex-1 py-3 text-base md:text-lg font-bold rounded-2xl text-[#646f87] hover:text-primary transition-colors"
-        @click="$router.push('/login')"
-        type="button"
-      >
+    <!-- Tabs -->
+    <div class="flex p-1 bg-slate-100 rounded-xl mb-5">
+      <RouterLink
+        class="flex-1 py-2 text-sm font-bold rounded-lg text-center text-slate-400 hover:text-primary transition"
+        to="/login">
         Login
-      </button>
-      <button
-        class="flex-1 py-3 text-base md:text-lg font-bold rounded-2xl bg-white dark:bg-primary shadow-sm text-primary dark:text-white"
-        type="button"
-      >
+      </RouterLink>
+      <button class="flex-1 py-2 text-sm font-bold rounded-lg bg-white shadow-sm text-primary transition">
         Register
       </button>
     </div>
 
-    <!-- form -->
-    <form class="space-y-6" @submit.prevent="onRegister">
-      <!-- NAME -->
+    <form class="space-y-3.5" @submit.prevent="onRegister">
+
+      <!-- Name -->
       <div>
-        <label class="block text-sm font-bold text-background-dark dark:text-white mb-2 ml-1">
-          Full Name
-        </label>
-        <div class="relative group">
-          <span
-            class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-[26px] text-[#646f87] group-focus-within:text-primary transition-colors"
-          >
-            badge
-          </span>
-          <input
-            v-model.trim="name"
-            class="w-full pl-14 pr-6 py-5 text-lg bg-background-light dark:bg-white/5 border-none rounded-2xl
-                   focus:ring-4 focus:ring-primary/20 transition-all placeholder:text-[#646f87]
-                   text-background-dark dark:text-white"
-            placeholder="Your name"
-            type="text"
-            autocomplete="name"
-            required
-          />
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Full Name</label>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">badge</span>
+          <input v-model.trim="name"
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/40 placeholder:text-slate-400 transition"
+            placeholder="Your full name" type="text" required />
         </div>
       </div>
 
-      <!-- EMAIL -->
+      <!-- Email -->
       <div>
-        <label class="block text-sm font-bold text-background-dark dark:text-white mb-2 ml-1">
-          Email Address
-        </label>
-        <div class="relative group">
-          <span
-            class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-[26px] text-[#646f87] group-focus-within:text-primary transition-colors"
-          >
-            mail
-          </span>
-          <input
-            v-model.trim="email"
-            class="w-full pl-14 pr-6 py-5 text-lg bg-background-light dark:bg-white/5 border-none rounded-2xl
-                   focus:ring-4 focus:ring-primary/20 transition-all placeholder:text-[#646f87]
-                   text-background-dark dark:text-white"
-            placeholder="hello@cathotel.com"
-            type="email"
-            autocomplete="email"
-            required
-          />
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Email Address</label>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">mail</span>
+          <input v-model.trim="email"
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/40 placeholder:text-slate-400 transition"
+            placeholder="hello@cathotel.com" type="email" required />
         </div>
       </div>
 
-      <!-- PASSWORD -->
+      <!-- Password -->
       <div>
-        <label class="block text-sm font-bold text-background-dark dark:text-white mb-2 ml-1">
-          Password
-        </label>
-        <div class="relative group">
-          <span
-            class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-[26px] text-[#646f87] group-focus-within:text-primary transition-colors"
-          >
-            lock
-          </span>
-          <input
-            v-model="password"
-            class="w-full pl-14 pr-6 py-5 text-lg bg-background-light dark:bg-white/5 border-none rounded-2xl
-                   focus:ring-4 focus:ring-primary/20 transition-all placeholder:text-[#646f87]
-                   text-background-dark dark:text-white"
-            placeholder="••••••••"
-            type="password"
-            autocomplete="new-password"
-            required
-          />
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Password</label>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">lock</span>
+          <input v-model="password"
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/40 placeholder:text-slate-400 transition"
+            placeholder="At least 6 characters" type="password" required />
         </div>
       </div>
 
-      <!-- CONFIRM -->
+      <!-- Confirm Password -->
       <div>
-        <label class="block text-sm font-bold text-background-dark dark:text-white mb-2 ml-1">
-          Confirm Password
-        </label>
-        <div class="relative group">
-          <span
-            class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-[26px] text-[#646f87] group-focus-within:text-primary transition-colors"
-          >
-            lock_reset
-          </span>
-          <input
-            v-model="confirmPassword"
-            class="w-full pl-14 pr-6 py-5 text-lg bg-background-light dark:bg-white/5 border-none rounded-2xl
-                   focus:ring-4 focus:ring-primary/20 transition-all placeholder:text-[#646f87]
-                   text-background-dark dark:text-white"
-            placeholder="••••••••"
-            type="password"
-            autocomplete="new-password"
-            required
-          />
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Confirm Password</label>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">lock_reset</span>
+          <input v-model="confirmPassword"
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/40 placeholder:text-slate-400 transition"
+            placeholder="••••••••" type="password" required />
         </div>
       </div>
 
-      <!-- ERROR -->
-      <div v-if="error" class="rounded-xl bg-red-50 text-red-700 px-4 py-3 text-sm font-semibold">
-        {{ error }}
-      </div>
+      <!-- Error -->
+      <div v-if="error" class="text-xs text-red-500 font-semibold bg-red-50 px-3 py-2 rounded-xl">{{ error }}</div>
 
-      <!-- SUBMIT -->
+      <!-- Submit -->
       <button
-        class="w-full py-5 text-xl bg-primary text-white rounded-2xl font-bold
-               shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all
-               flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-        type="submit"
-        :disabled="loading"
-      >
-        {{ loading ? "Creating..." : "Create Account" }}
-        <span class="material-symbols-outlined">arrow_forward</span>
+        class="w-full py-3 bg-primary text-white rounded-xl font-bold text-sm shadow-lg shadow-primary/30 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60 mt-1"
+        type="submit" :disabled="loading">
+        {{ loading ? 'Creating...' : 'Create Account' }}
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
       </button>
 
-      <div class="text-center">
-        <p class="text-sm font-medium text-[#646f87]">
-          Already have an account?
-          <a class="text-primary font-bold hover:underline cursor-pointer" @click="$router.push('/login')">
-            Sign in
-          </a>
-        </p>
-      </div>
     </form>
+
+    <p class="text-center text-xs text-slate-500 mt-5">
+      Already have an account?
+      <RouterLink class="text-primary font-bold hover:underline" to="/login">Sign in</RouterLink>
+    </p>
+
+    <div class="flex items-center justify-center gap-4 mt-3">
+      <a class="text-xs text-slate-400 hover:text-slate-600 cursor-pointer">Privacy Policy</a>
+      <a class="text-xs text-slate-400 hover:text-slate-600 cursor-pointer">Terms of Service</a>
+      <a class="text-xs text-slate-400 hover:text-slate-600 cursor-pointer">Contact Support</a>
+    </div>
+
   </div>
 </template>
 
-<script>
-import AuthenService from "../../services/AuthService.js"
-import { useAuthenStore } from "../../stores/authen.js"
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthenStore } from '../../stores/authen'
 
-export default {
-  name: "Register",
-  data() {
-    return {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      loading: false,
-      error: null,
-    }
-  },
-  methods: {
-    async onRegister() {
-      this.error = null
+const router = useRouter()
+const auth = useAuthenStore()
+const name = ref('')
+const email = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+const loading = ref(false)
+const error = ref(null)
 
-      if (this.password.length < 6) {
-        this.error = "Password must be at least 6 characters."
-        return
-      }
-      if (this.password !== this.confirmPassword) {
-        this.error = "Passwords do not match."
-        return
-      }
-
-      this.loading = true
-      try {
-        const res = await AuthenService.register({
-          name: this.name,
-          email: this.email,
-          password: this.password,
-        })
-
-        const authenStore = useAuthenStore()
-        authenStore.setToken(res.data.token)
-        authenStore.setUser(res.data.user)
-
-        // redirect by role
-        const role = res.data.user?.role || "customer"
-        if (role === "admin") {
-          this.$router.push("/admin/dashboard")
-        } else {
-          this.$router.push("/customer/dashboard")
-        }
-      } catch (err) {
-        this.error = err?.response?.data?.error || "Register failed"
-      } finally {
-        this.loading = false
-      }
-    },
-  },
+async function onRegister() {
+  error.value = null
+  if (password.value.length < 6) { error.value = 'Password must be at least 6 characters.'; return }
+  if (password.value !== confirmPassword.value) { error.value = 'Passwords do not match.'; return }
+  loading.value = true
+  try {
+    await auth.register({ name: name.value, email: email.value, password: password.value })
+    router.push(auth.isAdmin ? '/admin/dashboard' : '/customer/dashboard')
+  } catch (e) {
+    error.value = e?.response?.data?.error || 'Register failed'
+  } finally {
+    loading.value = false
+  }
 }
 </script>

@@ -1,42 +1,101 @@
 <template>
-  <div class="min-h-screen bg-background-light">
+  <div class="min-h-screen bg-[#f5f7ff]">
     <div class="flex min-h-screen">
-      <aside class="w-72 bg-white border-r border-primary/10 flex flex-col justify-between p-6 sticky top-0 h-screen">
-        <div class="flex flex-col gap-6">
-          <div class="flex items-center gap-3 px-2">
-            <div class="size-10 bg-secondary rounded-full flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-3xl">pets</span>
-            </div>
-            <div>
-              <h1 class="text-lg font-bold leading-none text-primary">The Cat Hotel</h1>
-              <p class="text-xs text-[#646f87] mt-1 uppercase tracking-widest font-semibold">Admin Portal</p>
-            </div>
-          </div>
 
-          <nav class="flex flex-col gap-2">
-            <RouterLink class="navlink" to="/admin">Dashboard</RouterLink>
-            <RouterLink class="navlink" to="/admin/reservations">Reservations</RouterLink>
-            <RouterLink class="navlink" to="/admin/customers">Customers</RouterLink>
-            <RouterLink class="navlink" to="/admin/cats">Cats</RouterLink>
-            <RouterLink class="navlink" to="/admin/rooms">Rooms</RouterLink>
-            <RouterLink class="navlink" to="/admin/announcements">Announcements</RouterLink>
-          </nav>
+      <!-- Sidebar -->
+      <aside class="w-56 bg-white border-r border-slate-100 flex flex-col py-5 px-3 sticky top-0 h-screen">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-2.5 px-3 mb-6">
+          <div class="size-8 bg-primary rounded-xl flex items-center justify-center text-white shadow-md shadow-primary/30">
+            <span class="material-symbols-outlined text-lg">pets</span>
+          </div>
+          <div>
+            <p class="font-extrabold text-sm text-slate-900 leading-none">The Cat Hotel</p>
+            <p class="text-[9px] text-slate-400 font-semibold tracking-widest uppercase mt-0.5">Admin Portal</p>
+          </div>
         </div>
 
-        <button class="w-full h-12 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/30"
-                @click="logout">
-          Logout
+        <!-- Nav -->
+        <nav class="flex flex-col gap-0.5 flex-1">
+          <RouterLink class="navlink" to="/admin/dashboard">
+            <span class="material-symbols-outlined text-[18px]">dashboard</span>
+            <span>Dashboard</span>
+          </RouterLink>
+          <RouterLink class="navlink" to="/admin/reservations">
+            <span class="material-symbols-outlined text-[18px]">event_note</span>
+            <span>Bookings</span>
+          </RouterLink>
+          <RouterLink class="navlink" to="/admin/customers">
+            <span class="material-symbols-outlined text-[18px]">group</span>
+            <span>Guests</span>
+          </RouterLink>
+          <RouterLink class="navlink" to="/admin/rooms">
+            <span class="material-symbols-outlined text-[18px]">meeting_room</span>
+            <span>Rooms</span>
+          </RouterLink>
+          <RouterLink class="navlink" to="/admin/cats">
+            <span class="material-symbols-outlined text-[18px]">pets</span>
+            <span>Cats</span>
+          </RouterLink>
+          <RouterLink class="navlink" to="/admin/announcements">
+            <span class="material-symbols-outlined text-[18px]">campaign</span>
+            <span>Announcements</span>
+          </RouterLink>
+        </nav>
+
+        <!-- Support card -->
+        <div class="mx-1 mb-4 bg-pink-50 rounded-2xl p-3 border border-pink-100">
+          <p class="text-[10px] font-extrabold text-pink-500 uppercase tracking-wider mb-1">Premium Support</p>
+          <p class="text-xs text-slate-500 font-medium mb-2">Need help with guest services?</p>
+          <button class="w-full py-1.5 bg-primary text-white rounded-full text-[10px] font-bold hover:brightness-110 transition">
+            Contact Concierge
+          </button>
+        </div>
+
+        <!-- New Booking button -->
+        <button
+          class="mx-1 flex items-center justify-center gap-1.5 py-2.5 bg-primary text-white rounded-xl text-xs font-bold hover:brightness-110 transition shadow-md shadow-primary/25"
+          @click="logout">
+          <span class="material-symbols-outlined text-[16px]">logout</span>
+          Sign Out
         </button>
       </aside>
 
-      <main class="flex-1 overflow-y-auto">
-        <header class="h-20 bg-white/80 backdrop-blur-md border-b border-primary/10 px-10 flex items-center justify-between sticky top-0 z-10">
-          <div class="text-sm font-bold text-slate-700">Admin</div>
-          <div class="text-sm text-slate-500">{{ userLabel }}</div>
+      <!-- Main -->
+      <main class="flex-1 flex flex-col min-h-screen">
+
+        <!-- Top header -->
+        <header class="h-14 bg-white border-b border-slate-100 px-6 flex items-center justify-between sticky top-0 z-10">
+          <div class="relative w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+            <input placeholder="Search guests, owners or room numbers..."
+              class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400" />
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button class="relative size-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition">
+              <span class="material-symbols-outlined text-slate-500 text-[18px]">notifications</span>
+            </button>
+            <button class="size-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition">
+              <span class="material-symbols-outlined text-slate-500 text-[18px]">settings</span>
+            </button>
+
+            <div class="flex items-center gap-2">
+              <div class="text-right">
+                <p class="text-xs font-extrabold text-slate-900 leading-none">{{ auth.user?.name }}</p>
+                <p class="text-[10px] text-slate-400 font-medium mt-0.5">Head Caretaker</p>
+              </div>
+              <div class="size-8 rounded-full bg-gradient-to-br from-primary to-blue-400 flex items-center justify-center text-white font-extrabold text-xs shadow-md">
+                {{ initials }}
+              </div>
+            </div>
+          </div>
         </header>
 
-        <div class="p-10">
-          <slot />
+        <!-- Content -->
+        <div class="flex-1 p-6">
+          <RouterView />
         </div>
       </main>
     </div>
@@ -51,19 +110,19 @@ import { useAuthenStore } from '../stores/authen'
 const router = useRouter()
 const auth = useAuthenStore()
 
-const userLabel = computed(() => auth.user?.email || auth.user?.name || '—')
+const initials = computed(() => {
+  const n = auth.user?.name || ''
+  return n.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase() || 'AD'
+})
 
-function logout() {
-  auth.logout()
-  router.push('/login')
-}
+function logout() { auth.logout(); router.push('/login') }
 </script>
 
 <style scoped>
 .navlink {
-  @apply flex items-center gap-3 px-4 py-3 rounded-full text-[#646f87] hover:bg-neutral-soft transition-all text-sm font-semibold;
+  @apply flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all text-xs font-semibold;
 }
 .router-link-active.navlink {
-  @apply bg-primary text-white;
+  @apply bg-primary text-white shadow-md shadow-primary/20;
 }
 </style>

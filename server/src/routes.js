@@ -1,4 +1,5 @@
 const AuthController = require('./controllers/AuthController')
+const StatsController = require('./controllers/StatsController')
 const CatController = require('./controllers/CatController')
 const RoomController = require('./controllers/RoomController')
 const ReservationController = require('./controllers/ReservationController')
@@ -32,6 +33,7 @@ module.exports = (app) => {
   app.post('/my/reservations/:id/cancel', requireAuth, ReservationController.cancel)
 
   // ===== Admin =====
+  app.get('/admin/stats', requireAuth, requireAdmin, StatsController.dashboard)
   app.get('/admin/customers', requireAuth, requireAdmin, UserController.customers)
   app.get('/admin/cats', requireAuth, requireAdmin, CatController.all)
 
