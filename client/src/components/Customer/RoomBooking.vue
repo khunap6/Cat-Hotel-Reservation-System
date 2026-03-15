@@ -51,16 +51,23 @@
             : 'border-transparent hover:border-slate-200'"
           @click="room.status === 'available' && (form.roomId = room.id)">
 
-          <div class="flex gap-0">
+          <div class="flex gap-0 items-stretch">
             <!-- Room image -->
-            <div class="w-40 h-32 flex-shrink-0 relative overflow-hidden rounded-l-2xl"
-              :class="roomImgBg(room.type)">
-              <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <div class="w-44 flex-shrink-0 relative overflow-hidden rounded-l-2xl self-stretch"
+              :class="!room.imageUrl ? roomImgBg(room.type) : 'bg-slate-100'">
+
+              <!-- actual photo -->
+              <img v-if="room.imageUrl" :src="room.imageUrl"
+                class="absolute inset-0 w-full h-full object-cover" />
+
+              <!-- fallback gradient + icon -->
+              <div v-else class="absolute inset-0 flex flex-col items-center justify-center">
                 <span class="material-symbols-outlined text-white/20 text-5xl">meeting_room</span>
               </div>
+
               <!-- Most popular badge -->
               <div v-if="room.type === 'VIP'"
-                class="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
+                class="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10">
                 MOST POPULAR
               </div>
             </div>
@@ -126,9 +133,13 @@
 
             <!-- Selected suite -->
             <div class="flex items-center gap-2.5 bg-slate-50 rounded-xl p-3">
-              <div class="size-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                :class="selectedRoom ? roomImgBg(selectedRoom.type) : 'bg-slate-200'">
-                <span class="material-symbols-outlined text-white/60 text-sm">hotel</span>
+              <div class="size-10 rounded-lg overflow-hidden flex-shrink-0"
+                :class="selectedRoom?.imageUrl ? '' : selectedRoom ? roomImgBg(selectedRoom.type) : 'bg-slate-200'">
+                <img v-if="selectedRoom?.imageUrl" :src="selectedRoom.imageUrl"
+                  class="w-full h-full object-cover" />
+                <div v-else class="w-full h-full flex items-center justify-center">
+                  <span class="material-symbols-outlined text-white/60 text-sm">hotel</span>
+                </div>
               </div>
               <div>
                 <p class="text-[10px] text-slate-400 font-semibold">Selected Suite</p>
