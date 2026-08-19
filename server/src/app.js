@@ -14,7 +14,8 @@ require('./userPassport')
 const passport = require('passport')
 app.use(passport.initialize())
 
-app.use('/assets', express.static('public'))
+const path = require('path')
+app.use('/assets', express.static(path.join(__dirname, '../public')))
 require('./routes')(app)
 
 // ─────────────────────────────────────────────

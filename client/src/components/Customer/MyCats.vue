@@ -218,28 +218,30 @@ async function loadCats() {
 }
 
 async function onSubmit() {
+  try {
+    // ถ้ามีรูปใหม่
+    if (croppedFile.value) {
 
-  // ถ้ามีรูปใหม่
-  if (croppedFile.value) {
+      const formData = new FormData()
+      formData.append("image", croppedFile.value)
 
-    const formData = new FormData()
-    formData.append("image", croppedFile.value)
+      const res = await UploadService.upload(formData)
 
-    const res = await UploadService.upload(formData)
+      form.value.imageUrl = res.data.url
+    }
 
-    form.value.imageUrl = res.data.url
+    if (mode.value === "create") {
+      await CatService.create(form.value)
+    } else {
+      await CatService.update(editingId.value, form.value)
+    }
+
+    modalOpen.value = false
+
+    await loadCats()
+  } catch (e) {
+    alert(e?.response?.data?.error || "Save failed, please try again.")
   }
-
-  if (mode.value === "create") {
-    await CatService.create(form.value)
-  } else {
-    await CatService.update(editingId.value, form.value)
-  }
-
-  modalOpen.value = false
-
-  await loadCats()
-
 }
 
 async function deleteCat(cat) {
