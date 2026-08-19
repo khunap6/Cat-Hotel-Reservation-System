@@ -106,10 +106,10 @@ async function seed() {
   let cats = []
   if (catCount === 0) {
     const catSeeds = [
-      { userId: customers[0].id, name: 'Luna', breed: 'Scottish Fold', gender: 'female', age: 3, weight: 3.5, imageUrl: 'https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=400&q=80', note: 'ชอบกอดนุ่มๆ ไม่ชอบเสียงดัง' },
+      { userId: customers[0].id, name: 'Luna', breed: 'Scottish Fold', gender: 'female', age: 3, weight: 3.5, imageUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcREk5jnW56d5r-FoV3S4pMDnjrP81T1QruJ8MRb3_1r0aeJGrcp', note: 'ชอบกอดนุ่มๆ ไม่ชอบเสียงดัง' },
       { userId: customers[0].id, name: 'Oliver', breed: 'Orange Tabby', gender: 'male', age: 5, weight: 5.2, imageUrl: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&q=80', note: 'กินดีนอนหลับ ชอบเล่นขนนก' },
       { userId: customers[1].id, name: 'Whiskers', breed: 'Persian', gender: 'male', age: 4, weight: 4.8, imageUrl: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&q=80', note: 'ขนยาวต้องหวีทุกวัน' },
-      { userId: customers[1].id, name: 'Mochi', breed: 'Munchkin', gender: 'female', age: 2, weight: 2.9, imageUrl: 'https://cdn.ennxo.com/uploads/products/320/e2f12c11eafd4d4ea0e4d95c62edd3b2.jpg', note: 'ขาสั้นน่ารัก ชอบนอนตักเจ้าของ' },
+      { userId: customers[1].id, name: 'Mochi', breed: 'Munchkin', gender: 'female', age: 2, weight: 2.9, imageUrl: 'https://www.munchkincatguide.com/wp-content/uploads/2018/12/munchkincatslider2.jpg', note: 'ขาสั้นน่ารัก ชอบนอนตักเจ้าของ' },
       { userId: customers[2].id, name: 'Simba', breed: 'Maine Coon', gender: 'male', age: 6, weight: 7.1, imageUrl: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?w=400&q=80', note: 'ตัวใหญ่แต่ใจดี ชอบน้ำ' },
       { userId: customers[2].id, name: 'Bella', breed: 'Siamese', gender: 'female', age: 3, weight: 3.2, imageUrl: 'https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=400&q=80', note: 'ร้องเก่ง ชอบคุย ต้องการความสนใจ' },
     ]
